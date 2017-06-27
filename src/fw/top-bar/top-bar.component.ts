@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FrameworkConfigService} from "../services/framework-config.service";
+import {FrameworkConfigService, IconFiles} from "../services/framework-config.service";
 
 @Component({
   selector: 'fw-top-bar',
@@ -13,15 +13,15 @@ export class TopBarComponent implements OnInit {
   ngOnInit() {
   }
 
-  getSocialIcons() {
+  getSocialIcons() : Array<IconFiles> {
     return this.fwConfigService.socialIcons;
   }
 
-  isShowLanguageSelector() {
+  isShowLanguageSelector() : boolean {
     return this.fwConfigService.showLanguageSelector;
   }
 
-  isShowUserControls() {
+  isShowUserControls() : boolean {
     return this.fwConfigService.showUserControls;
   }
 

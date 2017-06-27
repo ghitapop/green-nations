@@ -4,3 +4,7 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+<!-- adds additional style or overwrites the title bar  -->
+.user-title-bar {
+
+}
