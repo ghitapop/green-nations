@@ -25,7 +25,7 @@ export class ScreenService {
   }
 
   onResize($event) : void {
-    this.screenWidth = window.innerHeight;
+    this.screenWidth = window.innerWidth;
     this.screenHeight = window.innerHeight;
     this.resizeSource.next();
   }
