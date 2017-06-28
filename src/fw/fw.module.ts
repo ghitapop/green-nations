@@ -9,10 +9,15 @@ import {StatusBarComponent} from "./status-bar/status-bar.component";
 import {ScreenService} from "./services/screen.service";
 import {ScreenLargeDirective} from "./directives/screen-large.directive";
 import {ScreenBelowLargeDirective} from "./directives/screen-below-large.directive";
+import {MenuService} from "./services/menu.service";
+import {MenuComponent} from "./menus/menu/menu.component";
+import {MenuItemComponent} from "./menus/menu-item/menu-item.component";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   declarations: [
     FrameworkBodyComponent,
@@ -21,14 +26,17 @@ import {ScreenBelowLargeDirective} from "./directives/screen-below-large.directi
     TopBarComponent,
     StatusBarComponent,
     ScreenLargeDirective,
-    ScreenBelowLargeDirective
+    ScreenBelowLargeDirective,
+    MenuComponent,
+    MenuItemComponent
   ],
   exports: [
     FrameworkBodyComponent
   ],
   providers: [
     FrameworkConfigService,
-    ScreenService
+    ScreenService,
+    MenuService
   ]
 })
 export class SpaModule { }
