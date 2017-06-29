@@ -1,4 +1,4 @@
-import {MenuItem} from "../fw/services/menu.service";
+import {MenuItem} from "../fw/services/model/menu-item";
 
 export let initialMenuItems: Array<MenuItem> = [
   {
