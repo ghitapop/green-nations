@@ -1,6 +1,6 @@
 <li *ngFor="let item of menu">
   <fw-menu-item
-        [ngClass]="{'vertical-menu': menuService.isVertical }"
+        [ngClass]="{'vertical-menu': menuService.isVertical, 'router-link-active': isActiveRoute }"
         [item]="item"
         class="in-popup">
   </fw-menu-item>

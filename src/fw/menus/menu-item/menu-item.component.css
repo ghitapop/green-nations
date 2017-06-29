@@ -13,7 +13,7 @@
   width: 100%;
 }
 
-:host:not(.parent-is-pop) {
+:host:not(.parent-is-popup) {
   margin-left: 16px;
   width: auto;
 }
