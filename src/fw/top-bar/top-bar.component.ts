@@ -13,15 +13,15 @@ export class TopBarComponent implements OnInit {
   ngOnInit() {
   }
 
-  getSocialIcons() : Array<IconFiles> {
+  getSocialIcons(): Array<IconFiles> {
     return this.fwConfigService.socialIcons;
   }
 
-  isShowLanguageSelector() : boolean {
+  isShowLanguageSelector(): boolean {
     return this.fwConfigService.showLanguageSelector;
   }
 
-  isShowUserControls() : boolean {
+  isShowUserControls(): boolean {
     return this.fwConfigService.showUserControls;
   }
 
