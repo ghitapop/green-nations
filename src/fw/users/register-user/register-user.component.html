@@ -1,0 +1,40 @@
+<div class="register-form">
+  <img src="../../../assets/images/logo.png" width="320">
+  <h4>Register for New Account</h4>
+  <form #registerForm="ngForm" (submit)="register(registerForm)" novalidate>
+    <div class="form-group">
+      <input class="form-control" type="text" name="username" required placeholder="User Name" ngModel #username="ngModel"/>
+      <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+        User Name is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="text" name="email" required placeholder="Email" ngModel #email="ngModel"/>
+      <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+        Email is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <input class="form-control" name="password" type="password" required placeholder="Password" ngModel #password="ngModel"/>
+      <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+        Password is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <input class="form-control" name="password-again" type="password" required placeholder="Retype Password" ngModel #passwordAgain="ngModel"/>
+      <div [hidden]="passwordAgain.valid || passwordAgain.pristine" class="alert alert-danger">
+        Retype Password is required.
+      </div>
+    </div>
+    <div *ngIf="formError" class="label alert-danger">
+      {{ formError }}
+    </div>
+    <div *ngIf="!registering">
+      <button type="button" class="btn btn-default" routerLink="/sign-in" routerLinkActive="active">Cancel</button>
+      <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+    <div *ngIf="registering">
+      <p class="message">Registering...</p>
+    </div>
+  </form>
+</div>
