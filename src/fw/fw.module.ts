@@ -15,12 +15,15 @@ import {MenuItemComponent} from "./menus/menu-item/menu-item.component";
 import {RouterModule} from "@angular/router";
 import {PopupMenuComponent} from "./popup-menu/popup-menu.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {SignInComponent} from "./users/sign-in/sign-in.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   declarations: [
     FrameworkBodyComponent,
@@ -32,7 +35,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     ScreenBelowLargeDirective,
     MenuComponent,
     MenuItemComponent,
-    PopupMenuComponent
+    PopupMenuComponent,
+    SignInComponent
   ],
   exports: [
     FrameworkBodyComponent
