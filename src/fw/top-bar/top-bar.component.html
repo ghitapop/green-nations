@@ -8,5 +8,6 @@
 </div>
 
 <div *ngIf="isShowUserControls()">
-  <span>Sign In</span>
+  <span>{{ getLoggedUsername() }}</span>
+  <span class="sign-out" (click)="signOut()">SIGN OUT</span>
 </div>

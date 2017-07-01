@@ -1,3 +1,4 @@
+import { UserAPI } from 'fw/users/user.api';
 import { Component, OnInit } from '@angular/core';
 import {FrameworkConfigService, IconFiles} from "../services/framework-config.service";
 
@@ -8,7 +9,7 @@ import {FrameworkConfigService, IconFiles} from "../services/framework-config.se
 })
 export class TopBarComponent implements OnInit {
 
-  constructor(private fwConfigService: FrameworkConfigService) { }
+  constructor(private fwConfigService: FrameworkConfigService, private userAPI: UserAPI) { }
 
   ngOnInit() {
   }
@@ -23,6 +24,14 @@ export class TopBarComponent implements OnInit {
 
   isShowUserControls(): boolean {
     return this.fwConfigService.showUserControls;
+  }
+
+  signOut() {
+    this.userAPI.signOut();
+  }
+
+  getLoggedUsername() {
+    return this.userAPI.getUserInfo();
   }
 
 }

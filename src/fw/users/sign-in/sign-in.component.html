@@ -1,7 +1,7 @@
 <div class="sign-in-form">
   <img src="../../../assets/images/logo.png" width="320">
   <h4>Sign In</h4>
-  <form #signInForm="ngForm" (submit)="onsubmit(signInForm)" novalidate>
+  <form #signInForm="ngForm" (submit)="onSubmit(signInForm)" novalidate>
     <div class="form-group">
       <input class="form-control" type="text" name="username" required placeholder="User Name" ngModel #username="ngModel"/>
       <div [hidden]="username.valid || username.pristine" class="alert alert-danger">

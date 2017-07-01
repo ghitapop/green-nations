@@ -1,3 +1,6 @@
+import { AuthGuardService } from './services/auth-guard.service';
+import { UserAPI } from 'fw/users/user.api';
+import { UserService } from './services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -27,7 +30,11 @@ import { AuthenticatedUserComponent } from './authenticated-user/authenticated-u
     SpaModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    UserService,
+    { provide: UserAPI, useExisting: UserService },
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
