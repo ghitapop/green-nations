@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
 import { UserAPI } from "fw/users/user.api";
 
 @Injectable()
-export class UserService implements UserAPI {  
-  
+export class UserService implements UserAPI {
+
   isAuthenticated = false;
   username: string;
 
@@ -24,8 +24,8 @@ export class UserService implements UserAPI {
     return Observable.of({});
   }
 
-  getUserInfo(): string {
-    return this.username;
+  getUserInfo(): Observable<any> {
+    return Observable.of(this.username);
   }
 
   register(username: string, password: string, email: string): Observable<any> {
