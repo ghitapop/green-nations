@@ -10,11 +10,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
 import {RouterModule} from "@angular/router";
 import {appRoutes} from "./app.routing";
-import { CountryDetailComponent } from './country-detail/country-detail.component';
-import { CountryListComponent } from './country-list/country-list.component';
-import { CountryMaintComponent } from './country-maint/country-maint.component';
+import { CountryDetailComponent } from './country/country-detail/country-detail.component';
+import { CountryListComponent } from './country/country-list/country-list.component';
+import { CountryMaintComponent } from './country/country-maint/country-maint.component';
 import { AuthenticatedUserComponent } from './authenticated-user/authenticated-user.component';
 import {AppDataService} from "./services/app-data.service";
+import {CountryDefinitionService} from "./services/country-definition.service";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {AppDataService} from "./services/app-data.service";
     UserService,
     { provide: UserAPI, useExisting: UserService },
     AuthGuardService,
-    AppDataService
+    AppDataService,
+    CountryDefinitionService
   ],
   bootstrap: [AppComponent]
 })

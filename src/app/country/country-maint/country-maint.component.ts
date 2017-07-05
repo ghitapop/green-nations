@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Country} from "../view-models/country";
-import {AppDataService} from "../services/app-data.service";
 import {Router} from "@angular/router";
+import {Country} from "../../view-models/country";
+import {AppDataService} from "../../services/app-data.service";
 
 @Component({
   selector: 'app-country-maint',
@@ -31,6 +31,8 @@ export class CountryMaintComponent implements OnInit {
     this.deleteId = null;
   }
 
-
+  showCountryDetail(id: number) {
+    this.router.navigate(['/authenticated/country-detail', id, 'details']);
+  }
 
 }

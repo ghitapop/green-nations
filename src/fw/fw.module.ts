@@ -16,15 +16,18 @@ import {RouterModule} from "@angular/router";
 import {PopupMenuComponent} from "./popup-menu/popup-menu.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {SignInComponent} from "./users/sign-in/sign-in.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RegisterUserComponent} from "./users/register-user/register-user.component";
+import {DynamicFormComponent} from "./dynamic-forms/dynamic-form/dynamic-form.component";
+import {DynamicFieldComponent} from "./dynamic-forms/dynamic-field/dynamic-field.component";
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     FrameworkBodyComponent,
@@ -38,10 +41,13 @@ import {RegisterUserComponent} from "./users/register-user/register-user.compone
     MenuItemComponent,
     PopupMenuComponent,
     SignInComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    DynamicFormComponent,
+    DynamicFieldComponent
   ],
   exports: [
-    FrameworkBodyComponent
+    FrameworkBodyComponent,
+    DynamicFormComponent
   ],
   providers: [
     FrameworkConfigService,
