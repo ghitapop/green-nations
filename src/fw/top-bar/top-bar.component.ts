@@ -8,8 +8,16 @@ import {FrameworkConfigService, IconFiles} from "../services/framework-config.se
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent implements OnInit {
+  username: string;
+  pageError: string;
 
-  constructor(private fwConfigService: FrameworkConfigService, private userAPI: UserAPI) { }
+  constructor(private fwConfigService: FrameworkConfigService, private userAPI: UserAPI) {
+    this.userAPI.getUserInfo().subscribe((data) => {
+      this.username = data;
+    }, (error) => {
+      this.pageError = error;
+    });
+  }
 
   ngOnInit() {
   }
@@ -31,7 +39,7 @@ export class TopBarComponent implements OnInit {
   }
 
   getLoggedUsername() {
-    return this.userAPI.getUserInfo();
+    return this.username;
   }
 
 }

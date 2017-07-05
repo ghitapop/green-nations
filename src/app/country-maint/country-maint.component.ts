@@ -11,12 +11,16 @@ import {Router} from "@angular/router";
 export class CountryMaintComponent implements OnInit {
 
   countries: Array<Country>;
-  deleteError: string;
+  formError: string;
   deleteId: number;
   isDeleting = false;
 
   constructor(private dataService: AppDataService, private router: Router) {
-    dataService.getCountries().subscribe((data) => this.countries = data);
+    dataService.getCountries().subscribe((data) => {
+      this.countries = data;
+    }, (error) => {
+      this.formError = error;
+    });
   }
 
   ngOnInit() {

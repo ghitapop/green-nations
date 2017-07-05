@@ -14,6 +14,7 @@ import { CountryDetailComponent } from './country-detail/country-detail.componen
 import { CountryListComponent } from './country-list/country-list.component';
 import { CountryMaintComponent } from './country-maint/country-maint.component';
 import { AuthenticatedUserComponent } from './authenticated-user/authenticated-user.component';
+import {AppDataService} from "./services/app-data.service";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AuthenticatedUserComponent } from './authenticated-user/authenticated-u
   providers: [
     UserService,
     { provide: UserAPI, useExisting: UserService },
-    AuthGuardService
+    AuthGuardService,
+    AppDataService
   ],
   bootstrap: [AppComponent]
 })

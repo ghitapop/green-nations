@@ -13,7 +13,7 @@ export const appRoutes: Routes = [
   { path: 'signin', component: SignInComponent },
   { path: 'register', component: RegisterUserComponent },
   { path: 'authenticated', component: AuthenticatedUserComponent, canActivate: [AuthGuardService],
-    children: [      
+    children: [
       { path: '', canActivate: [AuthGuardService] ,
       children: [
         { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -22,7 +22,7 @@ export const appRoutes: Routes = [
         { path: 'country-detail/:country', component: CountryDetailComponent },
         { path: 'country-maint', component: CountryMaintComponent },
         { path: 'settings', component: SettingsComponent }
-      ] }      
+      ] }
   ]},
   { path: '', component: SignInComponent },
   { path: '**', component: SignInComponent }
