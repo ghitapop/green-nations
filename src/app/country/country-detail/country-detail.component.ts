@@ -35,12 +35,28 @@ export class CountryDetailComponent implements OnInit {
     }
   }
 
-  updateCountry(event) {
-
+  updateCountry(country: Country) {
+    this.errorMessage = null;
+    this.dataService.updateCountry(country).subscribe(
+      c => {
+          this.router.navigate(['/authenticated/country-maint']);
+      },
+      err => {
+          this.errorMessage = 'Error updating country';
+      }
+    );
   }
 
-  createCountry(event) {
-
+  createCountry(country: Country) {
+      this.errorMessage = null;
+      this.dataService.createCountry(country).subscribe(
+        c => {
+            this.router.navigate(['/authenticated/country-maint']);
+        },
+        err => {
+            this.errorMessage = 'Error creating country';
+        }
+      );
   }
 
 }

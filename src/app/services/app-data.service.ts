@@ -22,27 +22,49 @@ export class AppDataService {
   constructor(private userService: UserService) { }
 
   createCountry(vm: Country): Observable<any> {
+    return Observable.of(vm).delay(2000).do(e => {
+      if(vm.id == 0) {
+        let id = this.getNextId();
+        vm.id = id;
+        this.countries.push(vm);
+      }
+    });
+  }
+
+  deleteCountry(id: number): Observable<any> {
+    return Observable.of({}).delay(2000).do(e => {
+      this.countries.splice(this.countries.findIndex(c => c.id == id), 1);
+    });
+  }
+
+  updateCountry(vm: Country): Observable<any> {
+    return Observable.of(vm).delay(2000).do(e => {
+      this.countries.forEach(c => {
+        if(c.id == vm.id) {
+          c.name = vm.name;
+          c.epiIndex = vm.epiIndex;
+          vm = c;
+        }
+      });
+    });
+  }
+
+  getCountries(): Observable<any> {
+    return Observable.of(this.countries).delay(1000);
+  }
+
+  getCountry(id: number): Observable<any> {
+    const country = this.countries.find(c => c.id == id);
+    return Observable.of(country);
+  }
+
+  private getNextId(): number {
     let id = 0;
     this.countries.forEach(c => {
       if(c.id >= id) {
         id = c.id + 1;
       }
     });
-    vm.id = id;
-    this.countries.push(vm);
-    return Observable.of(vm);
-  }
-
-  deleteCountry(id: number): Observable<any> {
-    return Observable.of({}).delay(2000).do(e => this.countries.splice(this.countries.findIndex(c => c.id === id), 1));
-  }
-
-  getCountries(): Observable<any> {
-    return Observable.of(this.countries);
-  }
-
-  getCountry(id: number): Observable<any> {
-    const country = this.countries.find(c => c.id === id);
-    return Observable.of(country);
+    return id;
   }
 }
