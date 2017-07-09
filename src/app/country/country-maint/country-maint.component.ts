@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {Country} from "../../view-models/country";
 import {AppDataService} from "../../services/app-data.service";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-country-maint',
   templateUrl: './country-maint.component.html',
   styleUrls: ['./country-maint.component.css']
 })
-export class CountryMaintComponent implements OnInit {
+export class CountryMaintComponent implements OnInit, OnDestroy {
 
   countries: Array<Country>;
   formError: string;
@@ -16,8 +17,12 @@ export class CountryMaintComponent implements OnInit {
   isDeleting = false;
   isLoading = true;
 
+  //observers
+  countryListObs: Subscription;
+  countryDeleteObs: Subscription;
+
   constructor(private dataService: AppDataService, private router: Router) {
-    this.dataService.getCountries().subscribe((data) => {
+    this.countryListObs = this.dataService.getCountries().subscribe((data) => {
       this.countries = data;
       this.isLoading = false;
     }, (error) => {
@@ -26,6 +31,15 @@ export class CountryMaintComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    if(this.countryListObs) {
+      this.countryListObs.unsubscribe();
+    }
+    if(this.countryDeleteObs) {
+      this.countryDeleteObs.unsubscribe();
+    }
 
   }
 
@@ -41,7 +55,7 @@ export class CountryMaintComponent implements OnInit {
 
   deleteCountry(id: number) {
     this.isDeleting = true;
-    this.dataService.deleteCountry(id).subscribe(
+    this.countryDeleteObs = this.dataService.deleteCountry(id).subscribe(
       c => {
         this.cancelDelete();
       },
