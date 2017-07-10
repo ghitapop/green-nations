@@ -17,9 +17,8 @@ export class CountryMaintComponent implements OnInit, OnDestroy {
   isDeleting = false;
   isLoading = true;
 
-  //observers
   countryListObs: Subscription;
-  countryDeleteObs: Subscription;
+  deleteCountryObs: Subscription;
 
   constructor(private dataService: AppDataService, private router: Router) {
     this.countryListObs = this.dataService.getCountries().subscribe((data) => {
@@ -34,13 +33,10 @@ export class CountryMaintComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if(this.countryListObs) {
-      this.countryListObs.unsubscribe();
+    this.countryListObs.unsubscribe();
+    if (this.deleteCountryObs) {
+      this.deleteCountryObs.unsubscribe();
     }
-    if(this.countryDeleteObs) {
-      this.countryDeleteObs.unsubscribe();
-    }
-
   }
 
   cancelDelete() {
@@ -55,7 +51,7 @@ export class CountryMaintComponent implements OnInit, OnDestroy {
 
   deleteCountry(id: number) {
     this.isDeleting = true;
-    this.countryDeleteObs = this.dataService.deleteCountry(id).subscribe(
+    this.deleteCountryObs = this.dataService.deleteCountry(id).subscribe(
       c => {
         this.cancelDelete();
       },

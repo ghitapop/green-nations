@@ -18,9 +18,7 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
   errorMessage: string;
   countryDefinition: Array<FieldDefinition>;
 
-  getCountryObs: Subscription;
-  updateCountryObs: Subscription;
-  createCountryObs: Subscription;
+  countryListObs: Subscription;
 
   constructor(private router: Router, private route: ActivatedRoute, private dataService: AppDataService, private countryDefService: CountryDefinitionService) { }
 
@@ -31,29 +29,23 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
     if(this.operation === 'create') {
       this.country = {id: 0, name: "", epiIndex: null};
     } else {
-      this.getCountryObs = this.dataService.getCountry(this.route.snapshot.params['id']).subscribe((country: Country) => {
+        this.countryListObs = this.dataService.getCountry(this.route.snapshot.params['id']).subscribe((country: Country) => {
         this.country = country;
       }, (error) => {
         this.errorMessage = error;
       });
+
+      console.log('observers count', this.dataService.getCountry(this.route.snapshot.params['id']).count.length);
     }
   }
 
   ngOnDestroy() {
-    if(this.getCountryObs) {
-      this.getCountryObs.unsubscribe();
-    }
-    if(this.updateCountryObs) {
-      this.updateCountryObs.unsubscribe();
-    }
-    if(this.createCountryObs) {
-      this.createCountryObs.unsubscribe();
-    }
+    this.countryListObs.unsubscribe();
   }
 
   updateCountry(country: Country) {
     this.errorMessage = null;
-    this.updateCountryObs = this.dataService.updateCountry(country).subscribe(
+    this.dataService.updateCountry(country).subscribe(
       c => {
           this.router.navigate(['/authenticated/country-maint']);
       },
@@ -61,11 +53,13 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
           this.errorMessage = 'Error updating country';
       }
     );
+
+    console.log('observers count', this.dataService.updateCountry(country).count.length);
   }
 
   createCountry(country: Country) {
       this.errorMessage = null;
-      this.createCountryObs = this.dataService.createCountry(country).subscribe(
+      this.dataService.createCountry(country).subscribe(
         c => {
             this.router.navigate(['/authenticated/country-maint']);
         },
