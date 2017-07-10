@@ -1,8 +1,9 @@
-import {Component, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer} from '@angular/core';
+import {Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer} from '@angular/core';
 import {MenuItem} from "../../services/model/menu-item";
 import {MenuService} from "../../services/menu.service";
 import {NavigationEnd, Router} from "@angular/router";
 import {animate, style, transition, trigger} from "@angular/animations";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'fw-menu-item',
@@ -20,7 +21,7 @@ import {animate, style, transition, trigger} from "@angular/animations";
     ])
   ]
 })
-export class MenuItemComponent implements OnInit {
+export class MenuItemComponent implements OnInit, OnDestroy {
   @Input() item: MenuItem;
   @HostBinding('class.parent-is-popup')
   @Input() parentIsPopup = true;
@@ -31,10 +32,16 @@ export class MenuItemComponent implements OnInit {
   popupLeft = 0;
   popupTop = 34;
 
+  routeObs: Subscription;
+
   constructor(private router: Router, private menuService: MenuService, private el: ElementRef, private renderer: Renderer) { }
 
   ngOnInit() {
     this.checkActiveRoute(this.router.url);
+  }
+
+  ngOnDestroy() {
+    this.routeObs.unsubscribe();
   }
 
   @HostListener('click', ['$event'])
@@ -45,7 +52,7 @@ export class MenuItemComponent implements OnInit {
         this.mouseInPopup = !this.mouseInPopup;
       }
     } else if(this.item.route) {
-      let newEvent = new MouseEvent('mouseleave', {bubbles: true});
+      const newEvent = new MouseEvent('mouseleave', {bubbles: true});
       this.renderer.invokeElementMethod(
         this.el.nativeElement, 'dispatchEvent', [newEvent]
       );
@@ -57,11 +64,10 @@ export class MenuItemComponent implements OnInit {
   checkActiveRoute(route: string) {
     this.isActiveRoute = (route === '/' + this.item.route);
 
-    this.router.events
+    this.routeObs = this.router.events
       .subscribe((event) => {
         if(event instanceof NavigationEnd) {
           this.checkActiveRoute(event.url);
-          //console.log(event.url + ' ' + this.item.route + ' ' + this.isActiveRoute);
         }
       });
   }

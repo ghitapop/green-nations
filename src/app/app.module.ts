@@ -16,6 +16,7 @@ import { CountryMaintComponent } from './country/country-maint/country-maint.com
 import { AuthenticatedUserComponent } from './authenticated-user/authenticated-user.component';
 import {AppDataService} from "./services/app-data.service";
 import {CountryDefinitionService} from "./services/country-definition.service";
+import { CountryPanelComponent } from './country/country-panel/country-panel.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {CountryDefinitionService} from "./services/country-definition.service";
     CountryDetailComponent,
     CountryListComponent,
     CountryMaintComponent,
-    AuthenticatedUserComponent
+    AuthenticatedUserComponent,
+    CountryPanelComponent
   ],
   imports: [
     BrowserModule,
