@@ -50,7 +50,9 @@ import {PanelComponent} from "./panels/panel/panel.component";
   exports: [
     FrameworkBodyComponent,
     DynamicFormComponent,
-    PanelComponent
+    PanelComponent,
+    ScreenLargeDirective,
+    ScreenBelowLargeDirective
   ],
   providers: [
     FrameworkConfigService,

@@ -17,6 +17,7 @@ import { AuthenticatedUserComponent } from './authenticated-user/authenticated-u
 import {AppDataService} from "./services/app-data.service";
 import {CountryDefinitionService} from "./services/country-definition.service";
 import { CountryPanelComponent } from './country/country-panel/country-panel.component';
+import { ImagePanelComponent } from './panels/image-panel/image-panel.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CountryPanelComponent } from './country/country-panel/country-panel.com
     CountryListComponent,
     CountryMaintComponent,
     AuthenticatedUserComponent,
-    CountryPanelComponent
+    CountryPanelComponent,
+    ImagePanelComponent
   ],
   imports: [
     BrowserModule,
