@@ -17,6 +17,8 @@ export class TopBarComponent implements OnInit {
     }, (error) => {
       this.pageError = error;
     });
+
+    console.log(this.userAPI.getUserInfo().count.length);
   }
 
   ngOnInit() {

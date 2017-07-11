@@ -14,7 +14,7 @@ export const appRoutes: Routes = [
   { path: 'register', component: RegisterUserComponent },
   { path: 'authenticated', component: AuthenticatedUserComponent, canActivate: [AuthGuardService],
     children: [
-      { path: '', canActivate: [AuthGuardService] ,
+      { path: '', canActivateChild: [AuthGuardService] ,
       children: [
         { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
         { path: 'dashboard', component: DashboardComponent },

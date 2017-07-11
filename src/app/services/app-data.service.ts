@@ -37,16 +37,10 @@ export class AppDataService {
     });
   }
 
-  updateCountry(vm: Country): Observable<any> {
-    return Observable.of(vm).delay(2000).do(e => {
-      this.countries.forEach(c => {
-        if(c.id == vm.id) {
-          c.name = vm.name;
-          c.epiIndex = vm.epiIndex;
-          vm = c;
-        }
-      });
-    });
+  updateCountry(updatedCountry: Country): Observable<any> {
+    let country = this.countries.find(c => c.id == updatedCountry.id);
+    Object.assign(country, updatedCountry);
+    return Observable.of(country).delay(2000);
   }
 
   getCountries(): Observable<any> {
@@ -54,7 +48,7 @@ export class AppDataService {
   }
 
   getCountry(id: number): Observable<any> {
-    const country = this.countries.find(c => c.id == id);
+    let country = this.countries.find(c => c.id == id);
     return Observable.of(country);
   }
 
@@ -67,4 +61,5 @@ export class AppDataService {
     });
     return id;
   }
+
 }

@@ -10,7 +10,7 @@ import {initialMenuItems} from "./app.menu";
 })
 export class AppComponent {
   constructor(private configService: FrameworkConfigService, private menuService: MenuService) {
-    const config: FrameworkConfigSettings = {
+    let config: FrameworkConfigSettings = {
       socialIcons: [
         {imageFile: 'assets/images/social-fb-bw.png', alt: 'Facebook', link: 'https://www.facebook.com'},
         {imageFile: 'assets/images/social-gl-bw.png', alt: 'Google', link: 'https://google.com'},

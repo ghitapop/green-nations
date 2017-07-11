@@ -1,9 +1,8 @@
-import {Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer} from '@angular/core';
+import {Component, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer} from '@angular/core';
 import {MenuItem} from "../../services/model/menu-item";
 import {MenuService} from "../../services/menu.service";
 import {NavigationEnd, Router} from "@angular/router";
 import {animate, style, transition, trigger} from "@angular/animations";
-import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'fw-menu-item',
@@ -21,7 +20,7 @@ import {Subscription} from "rxjs/Subscription";
     ])
   ]
 })
-export class MenuItemComponent implements OnInit, OnDestroy {
+export class MenuItemComponent implements OnInit {
   @Input() item: MenuItem;
   @HostBinding('class.parent-is-popup')
   @Input() parentIsPopup = true;
@@ -32,16 +31,18 @@ export class MenuItemComponent implements OnInit, OnDestroy {
   popupLeft = 0;
   popupTop = 34;
 
-  routeObs: Subscription;
-
   constructor(private router: Router, private menuService: MenuService, private el: ElementRef, private renderer: Renderer) { }
 
   ngOnInit() {
     this.checkActiveRoute(this.router.url);
-  }
 
-  ngOnDestroy() {
-    this.routeObs.unsubscribe();
+    this.router.events
+      .subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+          this.checkActiveRoute(event.url);
+          //console.log(event.url + ' ' + this.item.route + ' ' + this.isActiveRoute);
+        }
+      });
   }
 
   @HostListener('click', ['$event'])
@@ -64,7 +65,7 @@ export class MenuItemComponent implements OnInit, OnDestroy {
   checkActiveRoute(route: string) {
     this.isActiveRoute = (route === '/' + this.item.route);
 
-    this.routeObs = this.router.events
+    this.router.events
       .subscribe((event) => {
         if(event instanceof NavigationEnd) {
           this.checkActiveRoute(event.url);
