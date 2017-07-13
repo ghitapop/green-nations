@@ -7,7 +7,7 @@
 
         <div *ngSwitchCase="'number'" class="form-group">
           <label [htmlFor]="field.key">{{ field.label }}</label>
-          <input class="form-group" [formControlName]="field.key" [id]="field.key" [readonly]="operation === 'details' || field.isId" type="number" />
+          <input class="form-control" [formControlName]="field.key" [id]="field.key" [readonly]="operation === 'details' || field.isId" type="number" />
         </div>
 
         <div *ngIf="form.get(field.key).hasError('required') && (submitted || form.get(field.key).touched)" class="alert alert-danger">
@@ -15,3 +15,4 @@
         </div>
     </div>
 </div>
+
