@@ -44,11 +44,11 @@ export class AppDataService {
   }
 
   getCountries(): Observable<any> {
-    return Observable.of(this.countries).delay(1000);
+    return Observable.of(this.countries);
   }
 
   getCountry(id: number): Observable<any> {
-    let country = this.countries.find(c => c.id == id);
+    var country = this.countries.find(c => c.id == id);
     return Observable.of(country);
   }
 

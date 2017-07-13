@@ -40,7 +40,6 @@
 
 .country-image-small {
   width: 100%;
-  display: flex;
 }
 
 .country-name {
@@ -53,12 +52,9 @@
 }
 
 .country-name-small {
-  display: flex;
-  flex-grow: 1;
-  font-size: 24px;
+  font-size: 34px;
   color: #555;
-  align-items: center;
-  justify-content: center;
+  margin-left: 15px;
 }
 
 .epi-index {
@@ -72,13 +68,10 @@
 }
 
 .epi-index-small {
-  display: flex;
-  width: 100%;
-  font-size: 34px;
+  font-size: 44px;
   color: white;
   background-color: green;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
 }
 
 

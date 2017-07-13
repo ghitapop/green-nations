@@ -1,5 +1,5 @@
 :host {
-  display: flex;
+  display: block;
 }
 
 .title-bar {
@@ -31,7 +31,7 @@
 
 span {
   margin-left: 10px;
-  margin-right: 10px;
+  margin-right: 20px;
   font-size: 25px;
   line-height: 50px;
 }

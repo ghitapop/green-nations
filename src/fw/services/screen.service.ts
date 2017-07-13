@@ -20,11 +20,11 @@ export class ScreenService {
     }
   }
 
-  isLarge() : boolean {
+  isLarge(): boolean {
     return this.screenWidth >= this.largeBreakpoint;
   }
 
-  onResize($event) : void {
+  onResize($event): void {
     this.screenWidth = window.innerWidth;
     this.screenHeight = window.innerHeight;
     this.resizeSource.next();

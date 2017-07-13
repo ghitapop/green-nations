@@ -27,7 +27,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   constructor(private router: Router, private route: ActivatedRoute, private location: Location) { }
 
   clearForm() {
-    const group = {};
+    let group = {};
     this.vmCopy = Object.assign({}, this.vm);
     this.vmDefinition.forEach(field => {
       group[field.key] = field.required ?

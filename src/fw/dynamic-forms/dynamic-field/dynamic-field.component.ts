@@ -7,7 +7,7 @@ import {FormGroup} from "@angular/forms";
   templateUrl: './dynamic-field.component.html',
   styleUrls: ['./dynamic-field.component.css']
 })
-export class DynamicFieldComponent implements OnInit {
+export class DynamicFieldComponent {
   @Input() field: FieldDefinition;
   @Input() form: FormGroup;
   @Input() operation: string;
@@ -18,8 +18,5 @@ export class DynamicFieldComponent implements OnInit {
   }
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }
