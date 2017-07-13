@@ -64,13 +64,6 @@ export class MenuItemComponent implements OnInit {
 
   checkActiveRoute(route: string) {
     this.isActiveRoute = (route === '/' + this.item.route);
-
-    this.router.events
-      .subscribe((event) => {
-        if(event instanceof NavigationEnd) {
-          this.checkActiveRoute(event.url);
-        }
-      });
   }
 
   onPopupMouseEnter(event): void {

@@ -4,7 +4,7 @@ import {MenuItem} from "./model/menu-item";
 @Injectable()
 export class MenuService {
   items: Array<MenuItem>;
-  isVertical = false;
+  isVertical = true;
   showingLeftSideMenu = false;
 
   constructor() { }
