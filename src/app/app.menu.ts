@@ -4,7 +4,7 @@ export let initialMenuItems: Array<MenuItem> = [
   {
     text: 'Dashboard',
     icon: 'glyphicon-dashboard',
-    route: '/authenticated/dashboard',
+    route: 'authenticated/dashboard',
     submenu: null
   },
   {
@@ -20,25 +20,25 @@ export let initialMenuItems: Array<MenuItem> = [
           {
             text: 'USA',
             icon: 'glyphicon-flag',
-            route: '/authenticated/country-detail/USA',
+            route: 'authenticated/country-detail/USA',
             submenu: null
           },
           {
             text: 'Romania',
             icon: 'glyphicon-flag',
-            route: '/authenticated/country-detail/Romania',
+            route: 'authenticated/country-detail/Romania',
             submenu: null
           },
           {
             text: 'UK',
             icon: 'glyphicon-flag',
-            route: '/authenticated/country-detail/UK',
+            route: 'authenticated/country-detail/UK',
             submenu: null
           },
           {
             text: 'Luxembourg',
             icon: 'glyphicon-flag',
-            route: '/authenticated/country-detail/Luxembourg',
+            route: 'authenticated/country-detail/Luxembourg',
             submenu: null
           }
         ]
@@ -46,19 +46,19 @@ export let initialMenuItems: Array<MenuItem> = [
       {
         text: 'Top 3',
         icon: 'glyphicon-expand',
-        route: '/authenticated/country-list/3',
+        route: 'authenticated/country-list/3',
         submenu: null
       },
       {
-        text: 'Top 10',
+        text: 'Top 5',
         icon: 'glyphicon-expand',
-        route: '/authenticated/country-list/10',
+        route: 'authenticated/country-list/5',
         submenu: null
       },
       {
         text: 'All',
         icon: 'glyphicon-expand',
-        route: '/authenticated/country-list/0',
+        route: 'authenticated/country-list/0',
         submenu: null
       }
     ]
@@ -66,18 +66,18 @@ export let initialMenuItems: Array<MenuItem> = [
   {
     text: 'Settings',
     icon: 'glyphicon-wrench',
-    route: '/authenticated/settings',
+    route: 'authenticated/settings',
     submenu: [
       {
         text: 'Country List',
         icon: 'glyphicon-th-list',
-        route: '/authenticated/country-maint',
+        route: 'authenticated/country-maint',
         submenu: null
       },
       {
         text: 'Settings',
         icon: 'glyphicon-cog',
-        route: '/authenticated/settings',
+        route: 'authenticated/settings',
         submenu: null
       }
     ]

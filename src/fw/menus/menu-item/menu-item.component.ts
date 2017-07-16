@@ -33,13 +33,13 @@ export class MenuItemComponent implements OnInit {
 
   constructor(private router: Router, private menuService: MenuService, private el: ElementRef, private renderer: Renderer) { }
 
-  ngOnInit() {
-    this.checkActiveRoute(this.router.url);
+  ngOnInit(): void {
+    this.checkActiveRoute(this.router.url.trim());
 
     this.router.events
       .subscribe((event) => {
         if (event instanceof NavigationEnd) {
-          this.checkActiveRoute(event.url);
+          this.checkActiveRoute(event.url.trim());
           //console.log(event.url + ' ' + this.item.route + ' ' + this.isActiveRoute);
         }
       });
@@ -63,7 +63,7 @@ export class MenuItemComponent implements OnInit {
   }
 
   checkActiveRoute(route: string) {
-    this.isActiveRoute = (route === '/' + this.item.route);
+    this.isActiveRoute = (route == '/' + this.item.route);
   }
 
   onPopupMouseEnter(event): void {
